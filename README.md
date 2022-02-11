@@ -1,34 +1,49 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# Gas Fee Dashboard
 
-First, run the development server:
+A small dashboard for displaying data on gas fees for the last 20 blocks on Ethereum in a line chart!
+
+Follow the tutorial on how to build this:
+
+
+## How to run
+
+Note: This script requires Node JS to be installed on your local machine.
+
+You can find instructions to [download Node JS here](https://nodejs.org/en/download/)
+
+Rename `.env.example` in the root folder to `.env`
+
+Follow the [Getting started with Alchemy guide](https://docs.alchemy.com/alchemy/introduction/getting-started) to generate an Alchemy Key.
+
+From your app Dashboard in Alchemy copy the http endpoint and use this as the value for `ALCHEMY_URL` in your `.env` file.
+
+It should looke something like this: `https://eth-mainnet.alchemyapi.io/v2/<your-api-key>`
+
+You can now install and run the script with the following commands:
 
 ```bash
-npm run dev
-# or
+yarn 
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+or
+```bash
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+npm install
+npm run dev
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+Upon succesful run you should navigate to :[localhost:3000/](http://localhost:3000/) to view the chart.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-## Learn More
+## Alchemy Web3 JS
 
-To learn more about Next.js, take a look at the following resources:
+Alchemy Web3 JS is a wrapper around web3js that makes it easier to integrate with Alchemy API's. Similar to the web3js api we have access to `web3.eth.getFeeHistory` which is the API method powering this script. This allows us to get fee information about X number of blocks in the Ethereum Mainnet.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Why is this script important?
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+What we refer to as the London Hard Fork is a set of five Ethereum Improvement Proposals (EIP). One of these proposals is known as EIP-1559. This Proposal created a fee structure that is a combination of a base fee and a reward fee for miners. This brings in a fee burning mechanism that turned Ethereum into a deflationary asset. 
 
-## Deploy on Vercel
+Since we now have two elements in the fee structure we need to calculate both the base fee as well as potential reward fees for miners in order to understand how much of a gas fee we will need to pay per transaction.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
