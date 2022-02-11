@@ -4,7 +4,7 @@
 A small dashboard for displaying data on gas fees for the last 20 blocks on Ethereum in a line chart!
 
 Follow the tutorial on how to build this:
-
+https://mirror.xyz/rahat.eth/ebzIQN28ZhslvfEasLpTmeCWtih18MBeUTkr0KFBoUM
 
 ## How to run
 
